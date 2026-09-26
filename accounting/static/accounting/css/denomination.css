@@ -34,8 +34,8 @@
             rgba(0, 91, 86, 0.82) 52%,
             rgba(0, 91, 86, 0.30) 100%
         ),
-        url("../images/denom") right center / 72% 125% no-repeat,
-        #005b56;
+          url("../images/denom-bg.png") right center / 72% 125% no-repeat,       
+           #005b56;
 
     color: white;
 

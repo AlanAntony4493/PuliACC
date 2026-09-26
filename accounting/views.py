@@ -128,3 +128,15 @@ def dashboard(request):
             "rounded_rate": rounded_rate,
         }
     )
+
+
+# =========================
+# CASH DENOMINATION
+# =========================
+
+def denomination(request):
+
+    return render(
+        request,
+        "accounting/denomination.html"
+    )

@@ -1,0 +1,306 @@
+{% extends "accounting/base.html" %}
+{% load static %}
+
+{% block title %}
+Cash Denomination | PULIKOT CREDITS AND INVESTMENTS PRIVATE LIMITED.
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'accounting/css/denomination.css' %}"
+>
+{% endblock %}
+
+{% block content %}
+
+<div class="denomination-page">
+
+    <section class="denomination-header">
+        <div>
+            <span class="denomination-eyebrow">
+                CASH MANAGEMENT
+            </span>
+            <h1>Cash Denomination</h1>
+            <p>
+                Count, organize and reconcile your cash
+                quickly and accurately.
+            </p>
+        </div>
+    </section>
+
+    <section class="denomination-card">
+        <div class="card-heading">
+            <div>
+                <h2>Notes Denominations</h2>
+                <p>Enter the quantity of each note. All fields are optional.</p>
+            </div>
+            <span class="optional-label">Optional</span>
+        </div>
+
+        <div class="denomination-table-wrapper">
+            <table class="denomination-table">
+                <thead>
+                    <tr>
+                        <th>Denomination</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>₹500</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="500" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹200</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="200" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹100</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="100" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹50</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="50" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹20</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="20" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹10</td>
+                        <td>
+                            <input type="number" class="denomination-input note-input"
+                                data-value="10" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount note-amount">₹0</td>
+                    </tr>
+                    <tr class="denomination-total-row">
+                        <td colspan="2">Total Notes</td>
+                        <td id="totalNotes">₹0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="denomination-card">
+        <div class="card-heading">
+            <div>
+                <h2>Coins Denominations</h2>
+                <p>Enter the quantity of each coin. All fields are optional.</p>
+            </div>
+            <span class="optional-label">Optional</span>
+        </div>
+
+        <div class="denomination-table-wrapper">
+            <table class="denomination-table">
+                <thead>
+                    <tr>
+                        <th>Denomination</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>₹5</td>
+                        <td>
+                            <input type="number" class="denomination-input coin-input"
+                                data-value="5" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount coin-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹2</td>
+                        <td>
+                            <input type="number" class="denomination-input coin-input"
+                                data-value="2" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount coin-amount">₹0</td>
+                    </tr>
+                    <tr>
+                        <td>₹1</td>
+                        <td>
+                            <input type="number" class="denomination-input coin-input"
+                                data-value="1" min="0" step="1"
+                                inputmode="numeric" placeholder="Enter quantity">
+                        </td>
+                        <td class="denomination-amount coin-amount">₹0</td>
+                    </tr>
+                    <tr class="denomination-total-row">
+                        <td>Total Coins</td>
+                        <td>
+                            <input
+                                type="number"
+                                id="totalCoinsInput"
+                                class="denomination-input total-coins-input"
+                                min="0"
+                                step="1"
+                                inputmode="numeric"
+                                placeholder="Enter total coins"
+                            >
+                        </td>
+                        <td id="totalCoins">₹0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="locker-inputs">
+        <div class="locker-input-card">
+            <label for="notesInLocker">Amount of Notes in Locker</label>
+            <div class="amount-input-wrapper">
+                <span>₹</span>
+                <input type="number" id="notesInLocker" min="0" step="1"
+                    inputmode="numeric" placeholder="Enter amount">
+            </div>
+        </div>
+
+        <div class="locker-input-card">
+            <label for="coinsInLocker">Amount of Coins in Locker</label>
+            <div class="amount-input-wrapper">
+                <span>₹</span>
+                <input type="number" id="coinsInLocker" min="0" step="1"
+                    inputmode="numeric" placeholder="Enter amount">
+            </div>
+        </div>
+
+        <div class="locker-input-card">
+            <label for="lessDueToSkk">Amount Less Due to SKK</label>
+            <div class="amount-input-wrapper">
+                <span>₹</span>
+                <input type="number" id="lessDueToSkk" min="0" step="1"
+                    inputmode="numeric" placeholder="Enter amount">
+            </div>
+        </div>
+    </section>
+
+    <section class="calculation-summary">
+
+        <div class="summary-heading">
+            <div>
+                <h2>Calculation Summary</h2>
+                <p>Complete breakdown of your cash calculation.</p>
+            </div>
+        </div>
+
+        <div class="summary-section">
+
+            <div class="summary-section-title">
+                <span>Denomination</span>
+                <span>×</span>
+                <span>Quantity</span>
+                <span>=</span>
+                <span>Amount</span>
+            </div>
+
+            <div id="notesSummary" class="summary-lines">
+                <!-- JS generates note rows -->
+            </div>
+
+        </div>
+
+        <div class="summary-section coins-summary">
+
+            <div class="summary-section-title">
+                <span>Coins</span>
+                <span>×</span>
+                <span>Amount</span>
+                <span>=</span>
+                <span>Amount</span>
+            </div>
+
+            <div class="summary-line">
+                <span>Coins</span>
+                <span>×</span>
+                <span id="coinsCalculationQuantity">₹0</span>
+                <span>=</span>
+                <strong id="coinsSummaryAmount">₹0</strong>
+            </div>
+
+        </div>
+
+        <div class="summary-total">
+            <span>Total</span>
+            <strong id="summaryFirstTotal">₹0</strong>
+        </div>
+
+        <div class="summary-adjustments">
+
+            <div class="summary-adjustment-row">
+                <span>Add: Coins in Locker</span>
+                <strong id="summaryCoinsLocker">₹0</strong>
+            </div>
+
+            <div class="summary-adjustment-row">
+                <span>Add: Notes in Locker</span>
+                <strong id="summaryNotesLocker">₹0</strong>
+            </div>
+
+        </div>
+
+        <div class="summary-total">
+            <span>Total</span>
+            <strong id="summarySecondTotal">₹0</strong>
+        </div>
+
+        <div class="summary-adjustments">
+
+            <div class="summary-adjustment-row">
+                <span>Less Due to SKK</span>
+                <strong id="summaryLessSkk">₹0</strong>
+            </div>
+
+        </div>
+
+        <div class="final-summary">
+            <span>FINAL</span>
+            <strong id="finalAmount">₹0</strong>
+        </div>
+
+    </section>
+
+    <div class="denomination-actions">
+        <button type="button" id="clearDenomination" class="clear-button">
+            Clear All
+        </button>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'accounting/js/denomination.js' %}"></script>
+{% endblock %}

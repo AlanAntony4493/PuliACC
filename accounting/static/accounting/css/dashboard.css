@@ -1,0 +1,1159 @@
+/* =========================================
+   PULICALC - GOLD LOAN DASHBOARD
+   ========================================= */
+
+.dashboard-page {
+    max-width: 1250px;
+    margin: 0 auto;
+
+    padding: 35px 28px 55px;
+}
+
+
+/* =========================================
+   PAGE INTRO
+   ========================================= */
+
+.dashboard-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 28px;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #006b67;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.dashboard-intro h1 {
+    margin: 0 0 8px;
+
+    color: #123333;
+
+    font-size: 30px;
+    font-weight: 750;
+
+    line-height: 1.2;
+}
+
+.dashboard-intro p {
+    margin: 0;
+
+    color: #668080;
+
+    font-size: 14px;
+}
+
+.rate-status {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    background: #e5f3f2;
+
+    color: #005c58;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #12a39a;
+}
+
+
+/* =========================================
+   COMMON CARD
+   ========================================= */
+
+.dashboard-card {
+    background: white;
+
+    border: 1px solid #e1eeee;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 22px rgba(0, 80, 80, 0.07);
+}
+
+
+/* =========================================
+   RATE SOURCE GRID
+   ========================================= */
+
+.rate-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.rate-card {
+    min-height: 225px;
+
+    padding: 22px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.rate-card-top {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+.rate-source {
+    color: #234848;
+
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.source-badge {
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #edf7f7;
+
+    color: #006b67;
+
+    font-size: 10px;
+    font-weight: 750;
+}
+
+
+/* =========================================
+   SOURCE LOGO + EXTERNAL LINK
+   ========================================= */
+
+.source-logo-container {
+    height: 58px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+}
+
+.source-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.source-link:hover {
+    transform: scale(1.04);
+    opacity: 0.88;
+}
+
+.source-link:focus-visible {
+    outline: 2px solid #007a75;
+    outline-offset: 5px;
+}
+
+.source-logo {
+    max-width: 175px;
+    max-height: 52px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.source-rate {
+    color: #123333;
+
+    font-size: 31px;
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.source-unit {
+    margin-top: 5px;
+
+    color: #789090;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   SELECTED GOLD RATE
+   ========================================= */
+
+.selected-rate-card {
+    position: relative;
+
+    min-height: 160px;
+
+    margin-bottom: 20px;
+
+    padding: 24px 30px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #005b56,
+            #004944
+        );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 8px 25px rgba(0, 80, 80, 0.16);
+}
+
+.selected-rate-content {
+    width: 100%;
+
+    text-align: center;
+}
+
+.selected-label {
+    margin-bottom: 7px;
+
+    color: #bde1df;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.selected-rate-value {
+    color: white;
+
+    font-size: 36px;
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+.selected-source {
+    margin-top: 7px;
+
+    color: #c7e4e3;
+
+    font-size: 12px;
+}
+
+.selected-source strong {
+    color: white;
+}
+
+.selected-info {
+    position: absolute;
+
+    right: 30px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    min-width: 180px;
+
+    padding-left: 25px;
+
+    border-left:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.selected-info-label {
+    color: white;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.selected-info-text {
+    color: #b8d8d7;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CALCULATOR GRID
+   ========================================= */
+
+.calculator-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.calculator-input-card,
+.calculation-card {
+    padding: 25px;
+}
+
+
+/* =========================================
+   SECTION HEADING
+   ========================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 22px;
+}
+
+.section-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #e5f3f2;
+
+    color: #006b67;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.section-heading h2 {
+    margin: 0 0 4px;
+
+    color: #183c3c;
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color: #7a9090;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+.dashboard-page label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #365555;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid #cedddd;
+
+    border-radius: 10px;
+
+    background: white;
+
+    transition: 0.2s ease;
+}
+
+.input-with-unit:focus-within {
+    border-color: #006b67;
+
+    box-shadow:
+        0 0 0 3px rgba(
+            0,
+            107,
+            103,
+            0.10
+        );
+}
+
+.input-with-unit input {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 14px 15px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #183c3c;
+
+    font-size: 17px;
+}
+
+.input-with-unit span {
+    flex-shrink: 0;
+
+    padding-right: 14px;
+
+    color: #718888;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CALCULATION CARD
+   ========================================= */
+
+.calculation-card {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.calculation-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid #edf2f2;
+}
+
+.calculation-row:last-child {
+    border-bottom: none;
+}
+
+.calculation-row span {
+    color: #6e8585;
+
+    font-size: 13px;
+}
+
+.calculation-row strong {
+    color: #006b67;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    text-align: right;
+}
+
+
+/* =========================================
+   MAXIMUM LOAN
+   ========================================= */
+
+.maximum-loan-card {
+    min-height: 185px;
+
+    margin-bottom: 20px;
+
+    padding: 30px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #004f4b,
+            #003f3c
+        );
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            70,
+            70,
+            0.15
+        );
+}
+
+.maximum-label {
+    margin-bottom: 8px;
+
+    color: #acd6d4;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.maximum-amount {
+    color: white;
+
+    font-size: 40px;
+    font-weight: 850;
+
+    line-height: 1.15;
+}
+
+.maximum-description {
+    margin-top: 7px;
+
+    color: #b7d7d6;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   BOTTOM GRID
+   ========================================= */
+
+.bottom-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+}
+
+.interest-card,
+.manual-card {
+    padding: 25px;
+}
+
+
+/* =========================================
+   INTEREST
+   ========================================= */
+
+.interest-rate {
+    color: #006b67;
+
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.interest-rate span {
+    color: #789090;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.interest-amount {
+    margin-top: 12px;
+
+    padding-top: 13px;
+
+    border-top:
+        1px solid #edf2f2;
+
+    color: #183c3c;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   MANUAL RATE
+   ========================================= */
+
+.manual-note {
+    margin-top: 10px;
+
+    color: #829696;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .dashboard-page {
+        padding: 28px 20px 45px;
+    }
+
+    .dashboard-intro {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .selected-rate-card {
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        padding-bottom: 25px;
+    }
+
+    .selected-info {
+        position: static;
+
+        transform: none;
+
+        width: 100%;
+
+        min-width: 0;
+
+        padding-left: 0;
+        padding-top: 16px;
+
+        border-left: none;
+
+        border-top:
+            1px solid rgba(
+                255,
+                255,
+                255,
+                0.18
+            );
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .dashboard-page {
+        padding: 24px 15px 40px;
+    }
+
+    .dashboard-intro h1 {
+        font-size: 25px;
+    }
+
+    .rate-grid,
+    .calculator-grid,
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rate-card {
+        min-height: 205px;
+    }
+
+    .selected-rate-card {
+        padding: 22px;
+    }
+
+    .selected-rate-value {
+        font-size: 29px;
+    }
+
+    .maximum-loan-card {
+        min-height: 165px;
+
+        padding: 25px 18px;
+    }
+
+    .maximum-amount {
+        font-size: 33px;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .dashboard-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .dashboard-intro h1 {
+        font-size: 22px;
+    }
+
+    .dashboard-card {
+        border-radius: 13px;
+    }
+
+    .calculator-input-card,
+    .calculation-card,
+    .interest-card,
+    .manual-card {
+        padding: 20px;
+    }
+
+    .source-rate {
+        font-size: 27px;
+    }
+
+    .calculation-row {
+        align-items: flex-start;
+    }
+
+    .calculation-row strong {
+        font-size: 16px;
+    }
+}
+/* =========================================
+   GOLD LOAN BANNER
+   ========================================= */
+
+.gold-loan-banner {
+    position: relative;
+
+    min-height: 205px;
+
+    margin-bottom: 28px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #005b56 0%,
+            #00534f 45%,
+            #004744 100%
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: stretch;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            80,
+            80,
+            0.12
+        );
+}
+
+
+/* =========================================
+   SUBTLE BACKGROUND PATTERN
+   ========================================= */
+
+.gold-loan-banner::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 18% 50%,
+            rgba(255,255,255,0.06),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 42% 20%,
+            rgba(255,255,255,0.04),
+            transparent 28%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   BANNER CONTENT
+   ========================================= */
+
+.gold-loan-banner-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 52%;
+
+    padding:
+        30px
+        20px
+        28px
+        32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   EYEBROW
+   ========================================= */
+
+.gold-loan-banner-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #c6e3e1;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   BANNER TITLE
+   ========================================= */
+
+.gold-loan-banner h1 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+}
+
+
+.gold-loan-banner h1 span {
+    color: #f5c64b;
+}
+
+
+/* =========================================
+   BANNER DESCRIPTION
+   ========================================= */
+
+.gold-loan-banner p {
+    max-width: 390px;
+
+    margin: 10px 0 0;
+
+    color: #d0e5e4;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BANNER IMAGE
+   ========================================= */
+
+.gold-loan-banner-image {
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    width: 55%;
+
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.gold-loan-banner-image::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: 1;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #005b56 0%,
+            rgba(0,91,86,0.70) 12%,
+            rgba(0,91,86,0.08) 48%,
+            rgba(0,0,0,0.05) 100%
+        );
+}
+
+
+.gold-loan-banner-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    filter:
+        saturate(0.92)
+        brightness(0.88);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .gold-loan-banner {
+        min-height: 190px;
+    }
+
+
+    .gold-loan-banner-content {
+        width: 58%;
+
+        padding-left: 26px;
+    }
+
+
+    .gold-loan-banner-image {
+        width: 55%;
+    }
+
+
+    .gold-loan-banner h1 {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .gold-loan-banner {
+        min-height: 230px;
+
+        border-radius: 13px;
+    }
+
+
+    .gold-loan-banner-content {
+        width: 100%;
+
+        padding:
+            25px
+            22px;
+
+        justify-content: flex-start;
+    }
+
+
+    .gold-loan-banner-image {
+        width: 100%;
+
+        opacity: 0.45;
+    }
+
+
+    .gold-loan-banner-image::before {
+        background:
+            linear-gradient(
+                90deg,
+                #005b56 0%,
+                rgba(0,91,86,0.78) 50%,
+                rgba(0,91,86,0.35) 100%
+            );
+    }
+
+
+    .gold-loan-banner h1 {
+        font-size: 25px;
+    }
+
+
+    .gold-loan-banner p {
+        max-width: 310px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 430px) {
+
+    .gold-loan-banner {
+        min-height: 220px;
+    }
+
+
+    .gold-loan-banner-content {
+        padding:
+            22px
+            19px;
+    }
+
+
+    .gold-loan-banner h1 {
+        font-size: 22px;
+    }
+
+
+    .gold-loan-banner p {
+        font-size: 11px;
+    }
+
+}
+/* =========================================
+   LIVE RATE STATUS UNDER BANNER
+   ========================================= */
+
+.banner-rate-status {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: -12px;
+
+    margin-bottom: 20px;
+
+    padding-right: 2px;
+}
+
+
+.banner-rate-status .rate-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    background: #e5f3f2;
+
+    color: #005c58;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.banner-rate-status .status-dot {
+    width: 8px;
+
+    height: 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #12a39a;
+}

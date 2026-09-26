@@ -1,0 +1,1333 @@
+/* =========================================================
+   CASH DENOMINATION PAGE
+   ========================================================= */
+
+.denomination-page {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 28px 0 50px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.denomination-header {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 185px;
+    margin-bottom: 26px;
+    padding: 34px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #005b56 0%,
+            rgba(0, 91, 86, 0.98) 34%,
+            rgba(0, 91, 86, 0.82) 52%,
+            rgba(0, 91, 86, 0.30) 100%
+        ),
+        url("../images/denom.jpg") right center / 72% 125% no-repeat,
+        #005b56;
+
+    color: white;
+
+    box-shadow:
+        0 10px 28px rgba(0, 80, 80, 0.14);
+}
+
+
+.denomination-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -100px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    border: 45px solid rgba(255, 255, 255, 0.035);
+
+    pointer-events: none;
+}
+
+
+.denomination-header > div {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 55%;
+}
+
+
+.denomination-eyebrow {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #bde1df;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+
+.denomination-header h1 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 32px;
+    font-weight: 800;
+
+    line-height: 1.15;
+}
+
+
+.denomination-header p {
+    max-width: 500px;
+
+    margin: 10px 0 0;
+
+    color: #d5e9e7;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   COMMON CARD
+   ========================================================= */
+
+.denomination-card,
+.calculation-summary {
+    margin-bottom: 22px;
+    padding: 24px;
+
+    border: 1px solid #d8ebea;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 5px 20px rgba(0, 80, 80, 0.055);
+}
+
+
+/* =========================================================
+   CARD HEADING
+   ========================================================= */
+
+.card-heading,
+.summary-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+.card-heading h2,
+.summary-heading h2 {
+    margin: 0;
+
+    color: #075f5c;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+
+.card-heading p,
+.summary-heading p {
+    margin: 5px 0 0;
+
+    color: #6b8180;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+.optional-label {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #e8f5f4;
+
+    color: #08716d;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   DENOMINATION TABLE
+   ========================================================= */
+
+.denomination-table-wrapper {
+    overflow-x: auto;
+
+    border-radius: 10px;
+}
+
+
+.denomination-table {
+    width: 100%;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    color: #164f4d;
+
+    font-size: 14px;
+}
+
+
+/* Fixed columns */
+
+.denomination-table th:nth-child(1),
+.denomination-table td:nth-child(1) {
+    width: 30%;
+}
+
+
+.denomination-table th:nth-child(2),
+.denomination-table td:nth-child(2) {
+    width: 40%;
+}
+
+
+.denomination-table th:nth-child(3),
+.denomination-table td:nth-child(3) {
+    width: 30%;
+}
+
+
+.denomination-table thead {
+    background: #e7f5f4;
+}
+
+
+.denomination-table th {
+    padding: 11px 18px;
+
+    color: #075f5c;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-align: left;
+
+    border-bottom: 1px solid #d5e9e7;
+}
+
+
+.denomination-table th:nth-child(2) {
+    text-align: center;
+}
+
+
+.denomination-table th:nth-child(3) {
+    text-align: right;
+}
+
+
+.denomination-table td {
+    height: 46px;
+
+    padding: 6px 18px;
+
+    border-bottom: 1px solid #edf3f2;
+
+    background: #ffffff;
+
+    font-size: 14px;
+}
+
+
+.denomination-table tbody tr:hover td {
+    background: #f8fcfc;
+}
+
+
+.denomination-table td:first-child {
+    font-weight: 800;
+}
+
+
+.denomination-table td:nth-child(2) {
+    text-align: center;
+}
+
+
+.denomination-table td:nth-child(3) {
+    text-align: right;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.denomination-input,
+.amount-input-wrapper input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #cbdedd;
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #174f4d;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.denomination-input {
+    max-width: 235px;
+
+    padding: 8px 12px;
+
+    text-align: center;
+}
+
+
+.denomination-input::placeholder,
+.amount-input-wrapper input::placeholder {
+    color: #9aaead;
+}
+
+
+.denomination-input:focus,
+.amount-input-wrapper input:focus {
+    border-color: #00847e;
+
+    background: #fbfefe;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 132, 126, 0.09);
+}
+
+
+/* =========================================================
+   REMOVE NUMBER INPUT SPINNERS
+   ========================================================= */
+
+.denomination-input::-webkit-outer-spin-button,
+.denomination-input::-webkit-inner-spin-button,
+.amount-input-wrapper input::-webkit-outer-spin-button,
+.amount-input-wrapper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* =========================================================
+   TOTAL ROW
+   ========================================================= */
+
+.denomination-total-row td {
+    padding-top: 11px;
+    padding-bottom: 11px;
+
+    border-bottom: none;
+
+    background: #e8f6f5;
+
+    color: #075f5c;
+
+    font-weight: 800;
+}
+
+
+.denomination-total-row:hover td {
+    background: #e8f6f5 !important;
+}
+
+
+.denomination-total-row td:first-child {
+    font-size: 15px;
+}
+
+
+.denomination-total-row td:last-child {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   TOTAL COINS INPUT
+   ========================================================= */
+
+.total-coins-input {
+    max-width: 235px;
+}
+
+
+/* =========================================================
+   LOCKER INPUTS
+   ========================================================= */
+
+.locker-inputs {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+
+.locker-input-card {
+    padding: 18px;
+
+    border: 1px solid #d8ebea;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 15px rgba(0, 80, 80, 0.045);
+}
+
+
+.locker-input-card label {
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: #075f5c;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+.amount-input-wrapper {
+    display: flex;
+    align-items: stretch;
+
+    overflow: hidden;
+
+    border: 1px solid #cbdedd;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.amount-input-wrapper:focus-within {
+    border-color: #00847e;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 132, 126, 0.09);
+}
+
+
+.amount-input-wrapper > span {
+    min-width: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-right: 1px solid #d8ebea;
+
+    background: #f0f8f7;
+
+    color: #075f5c;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+.amount-input-wrapper input {
+    min-width: 0;
+
+    padding: 9px 11px;
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    text-align: right;
+}
+
+
+.amount-input-wrapper input:focus {
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   CALCULATION SUMMARY
+   ========================================================= */
+
+.calculation-summary {
+    padding: 24px;
+}
+
+
+.summary-heading {
+    margin-bottom: 18px;
+}
+
+
+.summary-heading h2 {
+    font-size: 24px;
+}
+
+
+.summary-heading p {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SUMMARY SECTIONS
+   ========================================================= */
+
+.summary-section {
+    overflow: hidden;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #d9ebea;
+    border-radius: 11px;
+}
+
+
+/* =========================================================
+   SUMMARY HEADER
+   ========================================================= */
+
+.summary-section-title {
+    display: grid;
+
+    grid-template-columns:
+        110px
+        40px
+        120px
+        40px
+        1fr;
+
+    align-items: center;
+
+    min-height: 50px;
+
+    padding: 8px 20px;
+
+    background: #e7f5f4;
+
+    color: #075f5c;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.summary-section-title span:nth-child(1) {
+    text-align: left;
+}
+
+
+.summary-section-title span:nth-child(2),
+.summary-section-title span:nth-child(4) {
+    text-align: center;
+}
+
+
+.summary-section-title span:nth-child(3) {
+    text-align: center;
+}
+
+
+.summary-section-title span:nth-child(5) {
+    text-align: right;
+}
+
+
+/* =========================================================
+   SUMMARY ROWS
+   ========================================================= */
+
+.summary-line {
+    display: grid;
+
+    grid-template-columns:
+        110px
+        40px
+        120px
+        40px
+        1fr;
+
+    align-items: center;
+
+    min-height: 58px;
+
+    padding: 5px 20px;
+
+    border-top: 1px solid #edf3f2;
+
+    color: #164f4d;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.summary-line span,
+.summary-line strong {
+    margin: 0;
+
+    line-height: 1.2;
+}
+
+
+.summary-line span:nth-child(1) {
+    text-align: left;
+}
+
+
+.summary-line span:nth-child(2),
+.summary-line span:nth-child(4) {
+    text-align: center;
+
+    color: #587573;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+
+.summary-line span:nth-child(3) {
+    text-align: center;
+}
+
+
+.summary-line strong {
+    color: #075f5c;
+
+    font-size: 17px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   EMPTY SUMMARY ROW
+   ========================================================= */
+
+.summary-empty {
+    color: #8b9c9b;
+}
+
+
+.summary-empty span:nth-child(2),
+.summary-empty span:nth-child(4) {
+    color: #9aaead;
+}
+
+
+.summary-empty strong {
+    color: #8b9c9b;
+}
+
+
+/* =========================================================
+   COINS SUMMARY
+   ========================================================= */
+
+.coins-summary {
+    margin-top: 2px;
+}
+
+
+.coins-summary .summary-section-title,
+.coins-summary .summary-line {
+    grid-template-columns:
+        110px
+        40px
+        120px
+        40px
+        1fr;
+}
+
+
+/* =========================================================
+   SUMMARY TOTAL
+   ========================================================= */
+
+.summary-total {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 50px;
+
+    margin: 10px 0;
+
+    padding: 7px 20px;
+
+    border-radius: 10px;
+
+    background: #e6f5f4;
+
+    color: #075f5c;
+}
+
+
+.summary-total span {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+
+.summary-total strong {
+    font-size: 19px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SUMMARY ADJUSTMENTS
+   ========================================================= */
+
+.summary-adjustments {
+    margin: 6px 0;
+}
+
+
+.summary-adjustment-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 43px;
+
+    padding: 6px 20px;
+
+    border: 1px solid #d9ebea;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #245b59;
+
+    font-size: 14px;
+}
+
+
+.summary-adjustment-row + .summary-adjustment-row {
+    margin-top: 6px;
+}
+
+
+.summary-adjustment-row span {
+    font-weight: 700;
+}
+
+
+.summary-adjustment-row strong {
+    min-width: 130px;
+
+    color: #075f5c;
+
+    font-size: 15px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   FINAL SUMMARY
+   ========================================================= */
+
+.final-summary {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 58px;
+
+    margin-top: 12px;
+
+    padding: 7px 20px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00635e,
+            #004d49
+        );
+
+    color: white;
+
+    box-shadow:
+        0 7px 18px rgba(0, 80, 80, 0.13);
+}
+
+
+.final-summary span {
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.final-summary strong {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.denomination-actions {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+.clear-button {
+    min-width: 135px;
+
+    padding: 11px 20px;
+
+    border: none;
+    border-radius: 24px;
+
+    background: #00635e;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(0, 80, 80, 0.12);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.clear-button:hover {
+    background: #004d49;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 80, 80, 0.16);
+}
+
+
+.clear-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .denomination-page {
+        width: min(100% - 24px, 760px);
+
+        padding-top: 20px;
+    }
+
+
+    .denomination-header {
+        min-height: 170px;
+
+        padding: 28px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #005b56 0%,
+                rgba(0, 91, 86, 0.96) 40%,
+                rgba(0, 91, 86, 0.45) 100%
+            ),
+            url("../images/denom-bg.png") right center / 75% 125% no-repeat,
+            #005b56;
+    }
+
+
+    .denomination-header > div {
+        max-width: 60%;
+    }
+
+
+    .denomination-header h1 {
+        font-size: 28px;
+    }
+
+
+    .locker-inputs {
+        grid-template-columns: 1fr;
+    }
+
+
+    .locker-input-card {
+        padding: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .denomination-page {
+        width: calc(100% - 20px);
+
+        padding-top: 15px;
+        padding-bottom: 35px;
+    }
+
+
+    .denomination-header {
+        min-height: 155px;
+
+        margin-bottom: 17px;
+
+        padding: 23px 20px;
+
+        border-radius: 13px;
+
+        background:
+            linear-gradient(
+                90deg,
+                #005b56 0%,
+                rgba(0, 91, 86, 0.94) 45%,
+                rgba(0, 91, 86, 0.50) 100%
+            ),
+            url("../images/denom-bg.png") right center / 85% 120% no-repeat,
+            #005b56;
+    }
+
+
+    .denomination-header > div {
+        max-width: 72%;
+    }
+
+
+    .denomination-eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.4px;
+    }
+
+
+    .denomination-header h1 {
+        font-size: 24px;
+    }
+
+
+    .denomination-header p {
+        max-width: 280px;
+
+        font-size: 11px;
+    }
+
+
+    .denomination-card,
+    .calculation-summary {
+        padding: 16px;
+
+        margin-bottom: 17px;
+
+        border-radius: 12px;
+    }
+
+
+    .card-heading,
+    .summary-heading {
+        gap: 10px;
+    }
+
+
+    .card-heading h2,
+    .summary-heading h2 {
+        font-size: 18px;
+    }
+
+
+    .card-heading p,
+    .summary-heading p {
+        font-size: 11px;
+    }
+
+
+    .summary-heading h2 {
+        font-size: 21px;
+    }
+
+
+    .optional-label {
+        padding: 6px 9px;
+
+        font-size: 9px;
+    }
+
+
+    .denomination-table {
+        min-width: 510px;
+
+        font-size: 12px;
+    }
+
+
+    .denomination-table th {
+        padding: 9px 12px;
+
+        font-size: 10px;
+    }
+
+
+    .denomination-table td {
+        height: 44px;
+
+        padding: 5px 12px;
+
+        font-size: 12px;
+    }
+
+
+    .denomination-input {
+        max-width: 190px;
+
+        padding: 7px 9px;
+
+        font-size: 12px;
+    }
+
+
+    .locker-inputs {
+        gap: 10px;
+
+        margin-bottom: 17px;
+    }
+
+
+    .locker-input-card {
+        padding: 14px;
+    }
+
+
+    .calculation-summary {
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       MOBILE SUMMARY
+       ===================================================== */
+
+    .summary-section-title {
+        grid-template-columns:
+            65px
+            28px
+            75px
+            28px
+            1fr;
+
+        min-height: 43px;
+
+        padding: 8px 12px;
+
+        font-size: 11px;
+    }
+
+
+    .summary-line {
+        grid-template-columns:
+            65px
+            28px
+            75px
+            28px
+            1fr;
+
+        min-height: 47px;
+
+        padding: 5px 12px;
+
+        font-size: 13px;
+    }
+
+
+    .summary-line span:nth-child(2),
+    .summary-line span:nth-child(4) {
+        font-size: 14px;
+    }
+
+
+    .summary-line strong {
+        font-size: 14px;
+    }
+
+
+    .coins-summary .summary-section-title,
+    .coins-summary .summary-line {
+        grid-template-columns:
+            65px
+            28px
+            75px
+            28px
+            1fr;
+    }
+
+
+    .summary-total {
+        min-height: 46px;
+
+        padding: 6px 13px;
+    }
+
+
+    .summary-total span {
+        font-size: 14px;
+    }
+
+
+    .summary-total strong {
+        font-size: 17px;
+    }
+
+
+    .summary-adjustment-row {
+        min-height: 41px;
+
+        padding: 6px 12px;
+
+        font-size: 12px;
+    }
+
+
+    .summary-adjustment-row strong {
+        min-width: 90px;
+
+        font-size: 13px;
+    }
+
+
+    .final-summary {
+        min-height: 52px;
+
+        padding: 7px 14px;
+    }
+
+
+    .final-summary span {
+        font-size: 16px;
+    }
+
+
+    .final-summary strong {
+        font-size: 19px;
+    }
+
+
+    .clear-button {
+        min-width: 125px;
+
+        padding: 10px 17px;
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .denomination-header h1 {
+        font-size: 21px;
+    }
+
+
+    .denomination-header p {
+        font-size: 10px;
+    }
+
+
+    .card-heading h2,
+    .summary-heading h2 {
+        font-size: 16px;
+    }
+
+
+    .summary-heading h2 {
+        font-size: 19px;
+    }
+
+
+    .optional-label {
+        display: none;
+    }
+
+
+    /* =====================================================
+       VERY SMALL SCREEN SUMMARY
+       ===================================================== */
+
+    .summary-section-title {
+        grid-template-columns:
+            55px
+            24px
+            62px
+            24px
+            1fr;
+
+        min-height: 40px;
+
+        padding: 7px 9px;
+
+        font-size: 9px;
+    }
+
+
+    .summary-line {
+        grid-template-columns:
+            55px
+            24px
+            62px
+            24px
+            1fr;
+
+        min-height: 41px;
+
+        padding: 5px 9px;
+
+        font-size: 11px;
+    }
+
+
+    .summary-line span:nth-child(2),
+    .summary-line span:nth-child(4) {
+        font-size: 12px;
+    }
+
+
+    .summary-line strong {
+        font-size: 12px;
+    }
+
+
+    .coins-summary .summary-section-title,
+    .coins-summary .summary-line {
+        grid-template-columns:
+            55px
+            24px
+            62px
+            24px
+            1fr;
+    }
+
+
+    .summary-total span {
+        font-size: 13px;
+    }
+
+
+    .summary-total strong {
+        font-size: 16px;
+    }
+
+
+    .summary-adjustment-row {
+        font-size: 11px;
+    }
+
+
+    .summary-adjustment-row strong {
+        font-size: 12px;
+    }
+
+
+    .final-summary span {
+        font-size: 14px;
+    }
+
+
+    .final-summary strong {
+        font-size: 17px;
+    }
+
+}

@@ -1,0 +1,341 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        PULIKOT CREDITS AND INVESTMENTS PRIVATE LIMITED.
+        {% endblock %}
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{% static 'accounting/images/pulikot-logo.png' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'accounting/css/base.css' %}"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+         ========================================= -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="{% url 'dashboard' %}"
+                class="brand"
+            >
+
+                <img
+                    src="{% static 'accounting/images/pulikot-logo.png' %}"
+                    alt="Pulikot Logo"
+                    class="brand-logo"
+                >
+
+                <div class="brand-name">
+
+                    PULIKOT CREDITS AND INVESTMENTS
+                    <br>
+                    PRIVATE LIMITED.
+
+                </div>
+
+            </a>
+
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                type="button"
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+
+            <!-- NAVIGATION -->
+
+            <nav
+                class="main-nav"
+                id="mainNav"
+            >
+
+                <a
+                    href="{% url 'dashboard' %}"
+                    class="nav-link"
+                >
+                    Gold Loan Rates &amp; Calculator
+                </a>
+
+
+                <a
+                    href="{% url 'denomination' %}"
+                    class="nav-link"
+                >
+                    Cash Denomination
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="page-content">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+
+            <!-- =====================================
+                 COMPANY / ADDRESS
+                 ===================================== -->
+
+            <div class="footer-column footer-company-column">
+
+
+                <!-- LOGO + COMPANY NAME -->
+
+                <div class="footer-brand">
+
+                    <img
+                        src="{% static 'accounting/images/pulikot-logo.png' %}"
+                        alt="Pulikot Logo"
+                        class="footer-logo"
+                    >
+
+                    <div class="footer-company-name">
+
+                        PULIKOT CREDITS AND INVESTMENTS
+                        <br>
+                        PRIVATE LIMITED.
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <p class="footer-address">
+
+                    XVI/967, Peedikaparambil Arcade,<br>
+                    Mukkoottuthara P.O,<br>
+                    Kottayam Dt., Kerala - 686510
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 CONTACT
+                 ===================================== -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact Us
+                </h3>
+
+
+                <div class="footer-detail">
+
+                    <span class="footer-detail-label">
+                        Phone
+                    </span>
+
+
+                    <a href="tel:7736181077">
+                        77 361 810 77
+                    </a>
+
+
+                    <a href="tel:9496261653">
+                        94 962 616 53
+                    </a>
+
+                </div>
+
+
+                <div class="footer-detail">
+
+                    <span class="footer-detail-label">
+                        Email
+                    </span>
+
+
+                    <a href="mailto:info@pulikotcredits.com">
+                        info@pulikotcredits.com
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 OFFICE HOURS + QUICK LINKS
+                 ===================================== -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Office Hours
+                </h3>
+
+
+                <p class="footer-hours">
+
+                    Monday – Saturday
+                    <br>
+
+                    <strong>
+                        9:15 AM – 5:30 PM
+                    </strong>
+
+                </p>
+
+
+                <h3 class="footer-quick-heading">
+                    Quick Links
+                </h3>
+
+
+                <div class="footer-links">
+
+                    <a
+                        href="{% url 'dashboard' %}"
+                    >
+                        Gold Loan Calculator
+                    </a>
+
+
+                    <a
+                        href="{% url 'denomination' %}"
+                    >
+                        Cash Denomination
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================================
+             FOOTER BOTTOM
+             ========================================= -->
+
+        <div class="footer-bottom">
+
+            <div>
+
+                © 2026 PULIKOT CREDITS AND INVESTMENTS
+                PRIVATE LIMITED.
+
+            </div>
+
+
+            <div>
+
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         MOBILE MENU SCRIPT
+         ========================================= -->
+
+    <script>
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const mainNav =
+            document.getElementById("mainNav");
+
+
+        menuButton.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    mainNav.classList.toggle("show");
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    isOpen ? "true" : "false"
+                );
+
+            }
+        );
+
+    </script>
+
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

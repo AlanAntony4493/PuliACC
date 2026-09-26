@@ -1,437 +1,119 @@
+{% extends "accounting/base.html" %}
+
 {% load static %}
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- 
+{% block title %}
+PULIKOT CREDITS AND INVESTMENTS PRIVATE LIMITED. | Gold Loan Calculator
+{% endblock %}
 
-    <title>PuliAcc | Gold Loan Calculator</title>
-<link rel="icon" type="image/jpeg" href="{% static 'accounting/images/favicon.jpg' %}">
-    <style>
 
-        * {
-            box-sizing: border-box;
-        }
+{% block extra_css %}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-        }
+<link
+    rel="stylesheet"
+    href="{% static 'accounting/css/dashboard.css' %}"
+>
 
-        /* HEADER */
-        .header {
-            background: #111827;
-            color: white;
-            padding: 22px 30px;
-            text-align: center;
-        }
+{% endblock %}
 
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
 
-        .header p {
-            margin: 6px 0 0;
-            color: #cbd5e1;
-            font-size: 14px;
-        }
 
-        /* MAIN CONTAINER */
-        .container {
-            width: 92%;
-            max-width: 1000px;
-            margin: 30px auto;
-        }
+{% block content %}
 
-        /* RATE SOURCE GRID */
-        .rate-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
+<div class="dashboard-page">
 
-        /* COMMON CARD */
-        .card {
-            background: white;
-            border-radius: 14px;
-            padding: 24px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-        }
 
-        .card-title {
-            font-size: 15px;
-            color: #64748b;
-            margin-bottom: 10px;
-        }
+    <!-- =========================================
+         PAGE INTRO
+         ========================================= -->
+<!-- =========================================
+     GOLD LOAN BANNER
+     ========================================= -->
 
-        .rate {
-            font-size: 30px;
-            font-weight: bold;
-            color: #111827;
-        }
+<div class="gold-loan-banner">
 
-        .unit {
-            font-size: 14px;
-            color: #64748b;
-            margin-top: 5px;
-        }
+    <div class="gold-loan-banner-content">
 
-        /* GOLD RATE SOURCE CARDS */
-        .source-card {
-            background: white;
-            border-radius: 14px;
-            padding: 22px 24px 24px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-        }
-
-        .source-logo-container {
-            height: 60px;
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            margin-bottom: 12px;
-        }
-
-        .source-logo {
-            max-width: 190px;
-            max-height: 55px;
-
-            width: auto;
-            height: auto;
-
-            object-fit: contain;
-        }
-
-        .source-rate {
-            font-size: 30px;
-            font-weight: bold;
-            color: #111827;
-        }
-
-        .source-unit {
-            font-size: 14px;
-            color: #64748b;
-            margin-top: 5px;
-        }
-
-        /* SELECTED GOLD RATE */
-        .selected-card {
-            background: #111827;
-            color: white;
-
-            margin-bottom: 20px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            min-height: 150px;
-        }
-
-        .selected-card .card-title {
-            color: #cbd5e1;
-        }
-
-        .selected-card .rate {
-            color: white;
-        }
-
-        .selected-card .unit {
-            color: #cbd5e1;
-        }
-
-        /* INPUT CARD */
-        .input-card {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-
-            font-size: 15px;
-            font-weight: bold;
-
-            margin-bottom: 8px;
-
-            color: #374151;
-        }
-
-        input {
-            width: 100%;
-
-            padding: 14px 15px;
-
-            border: 1px solid #d1d5db;
-            border-radius: 9px;
-
-            font-size: 18px;
-
-            outline: none;
-
-            transition: 0.2s;
-        }
-
-        input:focus {
-            border-color: #111827;
-
-            box-shadow:
-                0 0 0 3px rgba(17, 24, 39, 0.08);
-        }
-
-        /* CALCULATION CARD */
-        .calculation-card {
-            background: white;
-
-            border-radius: 14px;
-
-            padding: 24px;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.07);
-
-            margin-bottom: 20px;
-        }
-
-        .calculation-row {
-            display: flex;
-
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 14px 0;
-
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .calculation-row:last-child {
-            border-bottom: none;
-        }
-
-        .calculation-label {
-            color: #64748b;
-            font-size: 15px;
-        }
-
-        .calculation-value {
-            font-size: 18px;
-            font-weight: bold;
-            color: #111827;
-        }
-
-        /* MAXIMUM AMOUNT */
-        .maximum-card {
-            background: #111827;
-
-            color: white;
-
-            border-radius: 14px;
-
-            padding: 28px;
-
-            text-align: center;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.10);
-
-            margin-bottom: 20px;
-        }
-
-        .maximum-title {
-            font-size: 15px;
-            color: #cbd5e1;
-
-            margin-bottom: 10px;
-        }
-
-        .maximum-amount {
-            font-size: 38px;
-
-            font-weight: bold;
-
-            color: white;
-        }
-
-        /* MONTHLY INTEREST */
-        .interest-card {
-            background: white;
-
-            border-radius: 14px;
-
-            padding: 24px;
-
-            text-align: center;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.07);
-
-            margin-bottom: 20px;
-        }
-
-        .interest-title {
-            font-size: 15px;
-
-            color: #64748b;
-
-            margin-bottom: 8px;
-        }
-
-        .interest-rate {
-            font-size: 24px;
-
-            font-weight: bold;
-
-            color: #111827;
-        }
-
-        .interest-amount {
-            margin-top: 6px;
-
-            font-size: 22px;
-
-            font-weight: bold;
-
-            color: #111827;
-        }
-
-        /* MANUAL RATE */
-        .manual-card {
-            background: white;
-
-            border-radius: 14px;
-
-            padding: 24px;
-
-            box-shadow:
-                0 5px 20px rgba(0, 0, 0, 0.07);
-        }
-
-        .manual-title {
-            font-size: 17px;
-
-            font-weight: bold;
-
-            color: #111827;
-
-            margin-bottom: 6px;
-        }
-
-        .manual-description {
-            font-size: 13px;
-
-            color: #64748b;
-
-            margin-bottom: 15px;
-        }
-
-        /* FOOTER */
-        .footer {
-            text-align: center;
-
-            color: #94a3b8;
-
-            font-size: 13px;
-
-            padding: 20px;
-        }
-
-        /* REMOVE NUMBER INPUT ARROWS */
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-
-            -webkit-appearance: none;
-
-            margin: 0;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-
-            .rate-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                width: 94%;
-
-                margin: 20px auto;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .source-rate {
-                font-size: 26px;
-            }
-
-            .maximum-amount {
-                font-size: 32px;
-            }
-
-            .source-logo {
-                max-width: 160px;
-
-                max-height: 48px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-    <!-- HEADER -->
-
-    <div class="header">
+        <span class="gold-loan-banner-eyebrow">
+            GOLD LOAN SERVICES
+        </span>
 
         <h1>
-            PuliAcc
+            Gold Loan Rates &amp;
+            <span>Calculator</span>
         </h1>
 
         <p>
-            Gold Loan Calculator
+            Check current gold rates and calculate
+            the maximum eligible loan amount.
         </p>
 
     </div>
 
 
-    <!-- MAIN -->
+    <div class="gold-loan-banner-image">
 
-    <div class="container">
+        <img
+            src="{% static 'accounting/images/gold-loan-banner.jpg' %}"
+            alt="Gold Loan"
+        >
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     LIVE RATE STATUS
+     ========================================= -->
+
+<div class="banner-rate-status">
+
+    <div class="rate-status">
+
+        <span class="status-dot"></span>
+
+        Live Rate Sources
+
+    </div>
+
+</div>
 
 
-        <!-- GOLD RATE SOURCES -->
 
-        <div class="rate-grid">
+    <!-- =========================================
+         GOLD RATE SOURCES
+         ========================================= -->
+
+    <div class="rate-grid">
 
 
-            <!-- GOODRETURNS -->
+        <!-- GOODRETURNS -->
 
-            <div class="source-card">
+        <div class="dashboard-card rate-card">
 
-                <div class="source-logo-container">
+            <div class="rate-card-top">
+
+                <div class="rate-source">
+                    GoodReturns
+                </div>
+
+                <div class="source-badge">
+                    22K / 916
+                </div>
+
+            </div>
+
+
+            <div class="source-logo-container">
+
+                <a
+                    href="https://www.goodreturns.in/gold-rates/kerala.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="source-link"
+                    title="Open GoodReturns Kerala Gold Rates"
+                >
 
                     <img
                         src="{% static 'accounting/images/goodreturns.jpeg' %}"
@@ -439,32 +121,54 @@
                         class="source-logo"
                     >
 
+                </a>
+
+            </div>
+
+
+            <div
+                class="source-rate"
+                id="goodReturnsRate"
+                data-rate="{{ good_returns_rate|default:'0' }}"
+            >
+                ₹0.00
+            </div>
+
+
+            <div class="source-unit">
+                22K / 916 Gold • Per Gram
+            </div>
+
+        </div>
+
+
+
+        <!-- IBJA -->
+
+        <div class="dashboard-card rate-card">
+
+            <div class="rate-card-top">
+
+                <div class="rate-source">
+                    IBJA
                 </div>
 
-
-                <div
-                    class="source-rate"
-                    id="goodReturnsRate"
-                    data-rate="{{ good_returns_rate|default:'0' }}"
-                >
-                    ₹0.00
-                </div>
-
-
-                <div class="source-unit">
-
-                    22K / 916 Gold • Per Gram
-
+                <div class="source-badge">
+                    916 Purity
                 </div>
 
             </div>
 
 
-            <!-- IBJA -->
+            <div class="source-logo-container">
 
-            <div class="source-card">
-
-                <div class="source-logo-container">
+                <a
+                    href="https://www.ibjarates.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="source-link"
+                    title="Open IBJA Gold Rates"
+                >
 
                     <img
                         src="{% static 'accounting/images/ibj.jpeg' %}"
@@ -472,43 +176,47 @@
                         class="source-logo"
                     >
 
-                </div>
-
-
-                <div
-                    class="source-rate"
-                    id="ibjaRate"
-                    data-rate="{{ ibja_rate|default:'0' }}"
-                >
-                    ₹0.00
-                </div>
-
-
-                <div class="source-unit">
-
-                    916 Purity • Per Gram
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- SELECTED RATE -->
-
-        <div class="card selected-card">
-
-            <div class="card-title">
-
-                Selected Gold Rate
+                </a>
 
             </div>
 
 
             <div
-                class="rate"
+                class="source-rate"
+                id="ibjaRate"
+                data-rate="{{ ibja_rate|default:'0' }}"
+            >
+                ₹0.00
+            </div>
+
+
+            <div class="source-unit">
+                916 Purity • Per Gram
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         SELECTED GOLD RATE
+         ========================================= -->
+
+    <div class="selected-rate-card">
+
+
+        <div class="selected-rate-content">
+
+            <div class="selected-label">
+                SELECTED GOLD RATE
+            </div>
+
+
+            <div
+                class="selected-rate-value"
                 id="selectedGoldRate"
                 data-rate="{{ selected_rate|default:'0' }}"
             >
@@ -516,94 +224,182 @@
             </div>
 
 
-            <div class="unit">
+            <div class="selected-source">
 
-                Source:
-                {{ selected_source }}
+
+                <br>
+
+                Selected Source:
+                <strong>{{ selected_source }}</strong>
 
             </div>
 
         </div>
 
 
-        <!-- WEIGHT INPUT -->
+        <div class="selected-info">
 
-        <div class="card input-card">
+            <div class="selected-info-label">
+                Rate Used for Calculation
+            </div>
 
-            <label for="weight">
-
-                Gold Weight (grams)
-
-            </label>
-
-
-            <input
-                type="text"
-                id="weight"
-                inputmode="decimal"
-                placeholder="Enter gold weight"
-                autocomplete="off"
-            >
+            <div class="selected-info-text">
+                The lower available gold rate is
+                selected automatically.
+            </div>
 
         </div>
 
 
-        <!-- CALCULATIONS -->
+    </div>
 
-        <div class="calculation-card">
+
+
+    <!-- =========================================
+         CALCULATOR
+         ========================================= -->
+
+    <div class="calculator-grid">
+
+
+        <!-- GOLD WEIGHT -->
+
+        <div class="dashboard-card calculator-input-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ⚖
+                </div>
+
+                <div>
+
+                    <h2>
+                        Gold Weight
+                    </h2>
+
+                    <p>
+                        Enter the net gold weight
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label for="weight">
+                Gold Weight (grams)
+            </label>
+
+
+            <div class="input-with-unit">
+
+                <input
+                    type="text"
+                    id="weight"
+                    inputmode="decimal"
+                    placeholder="Enter gold weight"
+                    autocomplete="off"
+                >
+
+                <span>
+                    grams
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LOAN RATE CALCULATION -->
+
+        <div class="dashboard-card calculation-card">
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    %
+                </div>
+
+                <div>
+
+                    <h2>
+                        Loan Rate
+                    </h2>
+
+                    <p>
+                        75% of selected gold rate
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <div class="calculation-row">
 
-                <div class="calculation-label">
+                <span>
+                    Selected Gold Rate
+                </span>
 
-                    75% of Selected Rate
+                <strong
+                    id="calculationSelectedRate"
+                >
+                    ₹0.00
+                </strong>
 
-                </div>
+            </div>
 
 
-                <div
-                    class="calculation-value"
+            <div class="calculation-row">
+
+                <span>
+                    Exact 75% Rate
+                </span>
+
+                <strong
                     id="exact75Rate"
                     data-rate="{{ exact_75_rate|default:'0' }}"
                 >
                     ₹0.00
-                </div>
+                </strong>
 
             </div>
 
 
             <div class="calculation-row">
 
-                <div class="calculation-label">
-
+                <span>
                     Rounded 75% Rate
+                </span>
 
-                </div>
-
-
-                <div
-                    class="calculation-value"
+                <strong
                     id="roundedRate"
                     data-rate="{{ rounded_rate|default:'0' }}"
                 >
                     ₹0 / gram
-                </div>
+                </strong>
 
             </div>
-
 
         </div>
 
 
-        <!-- MAXIMUM AMOUNT -->
+    </div>
 
-        <div class="maximum-card">
 
-            <div class="maximum-title">
 
-                Maximum Amount Allowed
+    <!-- =========================================
+         MAXIMUM LOAN AMOUNT
+         ========================================= -->
 
+    <div class="maximum-loan-card">
+
+        <div>
+
+            <div class="maximum-label">
+                MAXIMUM LOAN AMOUNT
             </div>
 
 
@@ -614,24 +410,55 @@
                 ₹0
             </div>
 
+
+            <div class="maximum-description">
+                Based on the entered gold weight
+                and applicable 75% rate.
+            </div>
+
         </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         INTEREST + MANUAL RATE
+         ========================================= -->
+
+    <div class="bottom-grid">
 
 
         <!-- MONTHLY INTEREST -->
 
-        <div class="interest-card">
+        <div class="dashboard-card interest-card">
 
-            <div class="interest-title">
+            <div class="section-heading">
 
-                Monthly Interest
+                <div class="section-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <h2>
+                        Monthly Interest
+                    </h2>
+
+                    <p>
+                        Calculated at the applicable rate
+                    </p>
+
+                </div>
 
             </div>
 
 
             <div class="interest-rate">
-
                 12.5%
-
+                <span>
+                    per annum
+                </span>
             </div>
 
 
@@ -645,32 +472,61 @@
         </div>
 
 
+
         <!-- MANUAL RATE -->
 
-        <div class="manual-card">
+        <div class="dashboard-card manual-card">
 
-            <div class="manual-title">
+            <div class="section-heading">
 
-                Manual 75% Rate
+                <div class="section-icon">
+                    ✎
+                </div>
+
+                <div>
+
+                    <h2>
+                        Manual 75% Rate
+                    </h2>
+
+                    <p>
+                        Optional custom rate
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <div class="manual-description">
+            <label for="manualRate">
+                Enter Manual 75% Rate
+            </label>
 
-                Optional. Enter a custom 75% rate to override
-                the system-calculated rate.
+
+            <div class="input-with-unit">
+
+                <input
+                    type="text"
+                    id="manualRate"
+                    inputmode="decimal"
+                    placeholder="Enter manual 75% rate"
+                    autocomplete="off"
+                >
+
+                <span>
+                    ₹ / gram
+                </span>
 
             </div>
 
 
-            <input
-                type="text"
-                id="manualRate"
-                inputmode="decimal"
-                placeholder="Enter manual 75% rate"
-                autocomplete="off"
-            >
+            <div class="manual-note">
+
+                Entering a manual rate will override
+                the system-calculated 75% rate
+                for the loan calculation.
+
+            </div>
 
         </div>
 
@@ -678,257 +534,291 @@
     </div>
 
 
-    <!-- FOOTER -->
+</div>
 
-    <div class="footer">
-
-        PuliAcc • Gold Loan Calculator
-
-    </div>
+{% endblock %}
 
 
-    <script>
 
-        /*
-        |--------------------------------------------------------------------------
-        | SYSTEM 75% RATE
-        |--------------------------------------------------------------------------
-        */
+{% block extra_js %}
 
-        const systemRate = parseFloat(
-            "{{ rounded_rate|default:'0' }}"
-        ) || 0;
+<script>
 
+    /* =========================================
+       SYSTEM 75% RATE
+       ========================================= */
 
-        /*
-        |--------------------------------------------------------------------------
-        | ELEMENTS
-        |--------------------------------------------------------------------------
-        */
-
-        const weightInput =
-            document.getElementById("weight");
-
-        const manualRateInput =
-            document.getElementById("manualRate");
-
-        const maximumAmount =
-            document.getElementById("maximumAmount");
-
-        const interestAmount =
-            document.getElementById("interestAmount");
+    const systemRate = parseFloat(
+        "{{ rounded_rate|default:'0' }}"
+    ) || 0;
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | INDIAN CURRENCY FORMAT
-        |--------------------------------------------------------------------------
-        */
 
-        function formatIndianMoney(
-            value,
-            decimals = 2
-        ) {
+    /* =========================================
+       ELEMENTS
+       ========================================= */
 
-            return "₹" +
-                Number(value).toLocaleString(
-                    "en-IN",
-                    {
-                        minimumFractionDigits:
-                            decimals,
+    const weightInput =
+        document.getElementById("weight");
 
-                        maximumFractionDigits:
-                            decimals
-                    }
-                );
+    const manualRateInput =
+        document.getElementById("manualRate");
 
-        }
+    const maximumAmount =
+        document.getElementById("maximumAmount");
 
+    const interestAmount =
+        document.getElementById("interestAmount");
 
-        /*
-        |--------------------------------------------------------------------------
-        | FORMAT DJANGO RATES
-        |--------------------------------------------------------------------------
-        */
-
-        function formatDjangoRate(
-            elementId,
-            decimals = 2
-        ) {
-
-            const element =
-                document.getElementById(elementId);
-
-
-            if (!element) {
-
-                return;
-
-            }
-
-
-            const value =
-                parseFloat(
-                    element.dataset.rate
-                );
-
-
-            if (
-                isNaN(value) ||
-                value <= 0
-            ) {
-
-                element.textContent =
-                    "N/A";
-
-                return;
-
-            }
-
-
-            element.textContent =
-                formatIndianMoney(
-                    value,
-                    decimals
-                );
-
-        }
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | FORMAT SOURCE RATES
-        |--------------------------------------------------------------------------
-        */
-
-        formatDjangoRate(
-            "goodReturnsRate",
-            2
-        );
-
-        formatDjangoRate(
-            "ibjaRate",
-            2
-        );
-
-        formatDjangoRate(
-            "selectedGoldRate",
-            2
-        );
-
-        formatDjangoRate(
-            "exact75Rate",
-            2
+    const calculationSelectedRate =
+        document.getElementById(
+            "calculationSelectedRate"
         );
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | FORMAT ROUNDED RATE
-        |--------------------------------------------------------------------------
-        */
 
-        const roundedRateElement =
+    /* =========================================
+       INDIAN CURRENCY FORMAT
+       ========================================= */
+
+    function formatIndianMoney(
+        value,
+        decimals = 2
+    ) {
+
+        return "₹" +
+            Number(value).toLocaleString(
+                "en-IN",
+                {
+                    minimumFractionDigits:
+                        decimals,
+
+                    maximumFractionDigits:
+                        decimals
+                }
+            );
+
+    }
+
+
+
+    /* =========================================
+       FORMAT DJANGO RATES
+       ========================================= */
+
+    function formatDjangoRate(
+        elementId,
+        decimals = 2
+    ) {
+
+        const element =
             document.getElementById(
-                "roundedRate"
+                elementId
             );
 
 
-        const roundedRateValue =
+        if (!element) {
+            return;
+        }
+
+
+        const value =
             parseFloat(
-                roundedRateElement.dataset.rate
+                element.dataset.rate
             );
 
 
         if (
-            !isNaN(roundedRateValue) &&
-            roundedRateValue > 0
+            isNaN(value) ||
+            value <= 0
         ) {
 
-            roundedRateElement.textContent =
-                formatIndianMoney(
-                    roundedRateValue,
-                    0
-                ) +
-                " / gram";
+            element.textContent =
+                "N/A";
 
-        } else {
-
-            roundedRateElement.textContent =
-                "₹0 / gram";
-
+            return;
         }
 
 
+        element.textContent =
+            formatIndianMoney(
+                value,
+                decimals
+            );
+
+    }
+
+
+
+    /* =========================================
+       FORMAT SOURCE RATES
+       ========================================= */
+
+    formatDjangoRate(
+        "goodReturnsRate",
+        2
+    );
+
+
+    formatDjangoRate(
+        "ibjaRate",
+        2
+    );
+
+
+    formatDjangoRate(
+        "selectedGoldRate",
+        2
+    );
+
+
+    formatDjangoRate(
+        "exact75Rate",
+        2
+    );
+
+
+
+    /* =========================================
+       SELECTED RATE IN CALCULATION CARD
+       ========================================= */
+
+    const selectedRateElement =
+        document.getElementById(
+            "selectedGoldRate"
+        );
+
+
+    const selectedRateValue =
+        parseFloat(
+            selectedRateElement.dataset.rate
+        );
+
+
+    if (
+        !isNaN(selectedRateValue) &&
+        selectedRateValue > 0
+    ) {
+
+        calculationSelectedRate.textContent =
+            formatIndianMoney(
+                selectedRateValue,
+                2
+            );
+
+    } else {
+
+        calculationSelectedRate.textContent =
+            "N/A";
+
+    }
+
+
+
+    /* =========================================
+       FORMAT ROUNDED RATE
+       ========================================= */
+
+    const roundedRateElement =
+        document.getElementById(
+            "roundedRate"
+        );
+
+
+    const roundedRateValue =
+        parseFloat(
+            roundedRateElement.dataset.rate
+        );
+
+
+    if (
+        !isNaN(roundedRateValue) &&
+        roundedRateValue > 0
+    ) {
+
+        roundedRateElement.textContent =
+            formatIndianMoney(
+                roundedRateValue,
+                0
+            ) +
+            " / gram";
+
+    } else {
+
+        roundedRateElement.textContent =
+            "₹0 / gram";
+
+    }
+
+
+
+    /* =========================================
+       CLEAN DECIMAL INPUT
+       ========================================= */
+
+    function cleanDecimalInput(input) {
+
+        let value =
+            input.value;
+
+
         /*
-        |--------------------------------------------------------------------------
-        | CLEAN DECIMAL INPUT
-        |--------------------------------------------------------------------------
+        Remove everything except
+        numbers and decimal point.
         */
 
-        function cleanDecimalInput(input) {
+        value =
+            value.replace(
+                /[^0-9.]/g,
+                ""
+            );
 
-            let value =
-                input.value;
+
+        /*
+        Allow only one decimal point.
+        */
+
+        const firstDot =
+            value.indexOf(".");
 
 
-            /*
-            Remove everything except
-            numbers and decimal point.
-            */
+        if (
+            firstDot !== -1
+        ) {
 
             value =
-                value.replace(
-                    /[^0-9.]/g,
+                value.substring(
+                    0,
+                    firstDot + 1
+                ) +
+
+                value.substring(
+                    firstDot + 1
+                ).replace(
+                    /\./g,
                     ""
                 );
 
-
-            /*
-            Allow only one decimal point.
-            */
-
-            const firstDot =
-                value.indexOf(".");
-
-
-            if (
-                firstDot !== -1
-            ) {
-
-                value =
-                    value.substring(
-                        0,
-                        firstDot + 1
-                    ) +
-
-                    value.substring(
-                        firstDot + 1
-                    ).replace(
-                        /\./g,
-                        ""
-                    );
-
-            }
-
-
-            input.value =
-                value;
-
         }
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | INPUT EVENTS
-        |--------------------------------------------------------------------------
-        */
+        input.value =
+            value;
 
-        [
-            weightInput,
-            manualRateInput
+    }
 
-        ].forEach(function(input) {
+
+
+    /* =========================================
+       INPUT EVENTS
+       ========================================= */
+
+    [
+        weightInput,
+        manualRateInput
+
+    ].forEach(
+        function(input) {
 
 
             /*
@@ -989,152 +879,150 @@
                 }
             );
 
-        });
+        }
+    );
+
+
+
+    /* =========================================
+       CALCULATE MAXIMUM AMOUNT
+       ========================================= */
+
+    function calculateAmount() {
+
+
+        const weight =
+            parseFloat(
+                weightInput.value
+            );
+
+
+        const manualRate =
+            parseFloat(
+                manualRateInput.value
+            );
+
+
+        let rate;
 
 
         /*
-        |--------------------------------------------------------------------------
-        | CALCULATE MAXIMUM AMOUNT
-        |--------------------------------------------------------------------------
+        Manual rate overrides
+        the system rate.
         */
 
-        function calculateAmount() {
+        if (
 
+            !isNaN(manualRate) &&
+            manualRate > 0
 
-            const weight =
-                parseFloat(
-                    weightInput.value
-                );
+        ) {
 
+            rate =
+                manualRate;
 
-            const manualRate =
-                parseFloat(
-                    manualRateInput.value
-                );
+        } else {
 
-
-            let rate;
-
-
-            /*
-            Manual rate overrides
-            the system rate.
-            */
-
-            if (
-
-                !isNaN(manualRate) &&
-                manualRate > 0
-
-            ) {
-
-                rate =
-                    manualRate;
-
-            } else {
-
-                rate =
-                    systemRate;
-
-            }
-
-
-            /*
-            Invalid weight.
-            */
-
-            if (
-
-                isNaN(weight) ||
-                weight <= 0
-
-            ) {
-
-                maximumAmount.textContent =
-                    "₹0";
-
-
-                interestAmount.textContent =
-                    "₹0.00 / month";
-
-
-                return;
-
-            }
-
-
-            /*
-            Invalid rate.
-            */
-
-            if (
-
-                rate <= 0
-
-            ) {
-
-                maximumAmount.textContent =
-                    "₹0";
-
-
-                interestAmount.textContent =
-                    "₹0.00 / month";
-
-
-                return;
-
-            }
-
-
-            /*
-            Maximum loan amount:
-
-            75% rate × gold weight
-            */
-
-            const amount =
-                rate * weight;
-
-
-            /*
-            Monthly interest:
-
-            Amount × 12.5% ÷ 12
-            */
-
-            const monthlyInterest =
-                amount *
-                12.5 /
-                100 /
-                12;
-
-
-            /*
-            Display maximum amount.
-            */
-
-            maximumAmount.textContent =
-                formatIndianMoney(
-                    amount,
-                    2
-                );
-
-
-            /*
-            Display monthly interest.
-            */
-
-            interestAmount.textContent =
-                formatIndianMoney(
-                    monthlyInterest,
-                    2
-                ) +
-                " / month";
+            rate =
+                systemRate;
 
         }
 
-    </script>
 
-</body>
-</html>
-   
+        /*
+        Invalid weight.
+        */
+
+        if (
+
+            isNaN(weight) ||
+            weight <= 0
+
+        ) {
+
+            maximumAmount.textContent =
+                "₹0";
+
+
+            interestAmount.textContent =
+                "₹0.00 / month";
+
+
+            return;
+
+        }
+
+
+        /*
+        Invalid rate.
+        */
+
+        if (
+
+            rate <= 0
+
+        ) {
+
+            maximumAmount.textContent =
+                "₹0";
+
+
+            interestAmount.textContent =
+                "₹0.00 / month";
+
+
+            return;
+
+        }
+
+
+        /*
+        Maximum loan amount:
+
+        75% rate × gold weight
+        */
+
+        const amount =
+            rate * weight;
+
+
+        /*
+        Monthly interest:
+
+        Amount × 12.5% ÷ 12
+        */
+
+        const monthlyInterest =
+            amount *
+            12.5 /
+            100 /
+            12;
+
+
+        /*
+        Display maximum amount.
+        */
+
+        maximumAmount.textContent =
+            formatIndianMoney(
+                amount,
+                2
+            );
+
+
+        /*
+        Display monthly interest.
+        */
+
+        interestAmount.textContent =
+            formatIndianMoney(
+                monthlyInterest,
+                2
+            ) +
+            " / month";
+
+    }
+
+</script>
+
+{% endblock %}

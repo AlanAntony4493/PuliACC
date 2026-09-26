@@ -1,6 +1,22 @@
 from django.urls import path
+
 from . import views
 
+
 urlpatterns = [
-    path("", views.dashboard, name="dashboard"),
+
+    # Home
+    path(
+        "",
+        views.dashboard,
+        name="dashboard"
+    ),
+
+    # Cash Denomination
+    path(
+        "denomination/",
+        views.denomination,
+        name="denomination"
+    ),
+
 ]
